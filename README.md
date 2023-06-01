@@ -174,15 +174,17 @@ endmodule
 
 ### RTL LOGIC FOR FLIPFLOPS 
 i) SR FLIP FLOP:
+
 ![output](https://github.com/Hemapriya-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/l1.png)
 
-
 ii) D FLIP FLOP:
+
 ![output](https://github.com/Hemapriya-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/l2.png)
 
 iii)JK FLIP FLOP:
 
 ![output](https://github.com/Hemapriya-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/l3.png)
+
 iv)T FLIP FLOP:
 
 ![output](https://github.com/Hemapriya-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/l4.png)
