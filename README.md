@@ -102,110 +102,126 @@ Q(t+1)=T′Q(t)+TQ(t)′
 ⇒Q(t+1)=T⊕Q(t)
 
 ### Procedure
-1.Open Quartus II and select new project and choose the file location.
-2.Module Declaration. Module should have the file name.
-3.Declare Inputs and outputs.
-4.Use assign declaration and wire to define the functionality of logic circuits.
-5.End the program with endmodule.
-6.Run the program and choose RTL viewer to get RTL realization.
+/* 1.Using nand gates and wires construct sr flip flop.
+
+2.Repeat same steps to construct JK,D,T flipflops.
+
+3.Find Rtl logic and timing diagram for all flipflops.
+
+4.end the program. */
 
 
 
-### PROGRAM 
+### PROGRAM 1(T FLIP FLOP)
 ```
-/*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: R Hemapriya
-RegisterNumber:  212221230036
-*/
-i) SR FLIP FLOP:
+Developed by:  R.HEMAPRIYA
+RegisterNumber:  212222230036
 
-module sr(s,r,clock,q,qbar);
-input s,r,clock;
-output q,qbar;
-wire x,y;
-nand(x,s,clock);
-nand(y,r,clock);
-nand(q,x,qbar);
-nand(qbar,y,q);
+module flipflops(T,clk,Q,Qbar);
+input T,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=(T&(~Q))|((~T)&Q);
+Qbar=((~T)&Qbar)|(T&(~Qbar));
+end
 endmodule
 
-ii) D FLIP FLOP:
-
-module dflp(D,Clock,Q,Qbar);
-input D,Clock;
-output Q,Qbar;
-assign Dbar = ~D;
-wire X,Y;
-nand (X,D,Clock);
-nand (Y,Dbar,Clock);
-nand (Q,X,Qbar);
-nand (Qbar,Y,Q);
-endmodule
-
-
-iii) JK FLIP FLOP:
-
-module jkflp(J,K,Clock,Q,Qbar);
-input J,Clock,K;
-output Q,Qbar;
-wire S,R;
-nand (S,J,Clock,Qbar);
-nand (R,K,Clock,Q);
-nand (Q,S,Qbar);
-nand (Qbar,R,Q);
-endmodule
-
-iv) T FLIP FLOP:
-
-module tflp(T,Clock,Q,Qbar);
-input T,Clock;
-output Q,Qbar;
-wire A,B;
-nand (A,T,Clock,Qbar);
-nand (B,T,Clock,Q);
-nand (Q,A,Qbar);
-nand (Qbar,B,Q);
-endmodule
 ```
-
-
-
-
 ### RTL LOGIC FOR FLIPFLOPS 
-i) SR FLIP FLOP:
-
-![output](https://github.com/Hemapriya-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/l1.png)
-
-ii) D FLIP FLOP:
-
-![output](https://github.com/Hemapriya-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/l2.png)
-
-iii)JK FLIP FLOP:
-
-![output](https://github.com/Hemapriya-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/l3.png)
-
-iv)T FLIP FLOP:
-
-![output](https://github.com/Hemapriya-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/l4.png)
+![Screenshot 2023-05-25 141548](https://github.com/JEGADEESH07/Experiment--05-Implementation-of-flipflops-using-verilog/assets/113497131/fb8fd4ad-f76e-4968-9486-43e5df88cdbb)
 
 ### TIMING DIGRAMS FOR FLIP FLOPS 
+![Screenshot 2023-05-25 141515](https://github.com/JEGADEESH07/Experiment--05-Implementation-of-flipflops-using-verilog/assets/113497131/c62f2d8d-919c-4639-88d9-84c1419a7d25)
 
-i) SR FLIP FLOP:
 
-![output](https://github.com/Hemapriya-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/l5.png)
+### PROGRAM 2(D FLIP FLOP)
+```
+Program for flipflops  and verify its truth table in quartus using Verilog programming.
+Developed by: R.HEMAPRIYA
+RegisterNumber:  212222230036
 
-ii) D FLIP FLOP:
+module flipflops(D,clk,Q,Qbar);
+input D,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=D;
+Qbar=~D;
+end
+endmodule
 
-![output](https://github.com/Hemapriya-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/l6.png)
+```
+### RTL LOGIC FOR FLIPFLOPS 
+![Screenshot 2023-05-31 165256](https://github.com/JEGADEESH07/Experiment--05-Implementation-of-flipflops-using-verilog/assets/113497131/8455ee11-3026-47d3-80d7-b287017707af)
 
-iii)JK FLIP FLOP:
+### TIMING DIGRAMS FOR FLIP FLOPS 
+![Screenshot 2023-05-31 170012](https://github.com/JEGADEESH07/Experiment--05-Implementation-of-flipflops-using-verilog/assets/113497131/6429f55f-1cdd-4557-addf-0ea0399ee63d)
 
-![output](https://github.com/Hemapriya-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/l7.png)
 
-iv)T FLIP FLOP:
 
-![output](https://github.com/Hemapriya-2004/Experiment--05-Implementation-of-flipflops-using-verilog/blob/main/l8.png)
+### PROGRAM 3(SR FLIP FLOP)
+```
+Program for flipflops  and verify its truth table in quartus using Verilog programming.
+Developed by: R.HEMAPRIYA
+RegisterNumber:  212222230036
+
+module flipflops(S,R,clk,Q,Qbar);
+input S,R,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=S|((~R)&Q);
+Qbar=R|((~S)&(Qbar));
+end
+endmodule
+
+```
+### RTL LOGIC FOR FLIPFLOPS 
+![Screenshot 2023-05-25 115651](https://github.com/JEGADEESH07/Experiment--05-Implementation-of-flipflops-using-verilog/assets/113497131/d5efbe42-75c4-4def-af58-361ef70e1bfc)
+
+### TIMING DIGRAMS FOR FLIP FLOPS 
+![Screenshot 2023-05-25 115548](https://github.com/JEGADEESH07/Experiment--05-Implementation-of-flipflops-using-verilog/assets/113497131/61c661ae-cab4-44e4-a9d9-8081d69321b7)
+
+
+
+### PROGRAM 4(JK FLIP FLOP)
+```
+Program for flipflops and verify its truth table in quartus using Verilog programming.
+Developed by: R.HEMAPRIYA
+RegisterNumber:  212222230036
+module flipflops(J,K,clk,Q,Qbar);
+input J,K,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=(J&(~Q))|((~K)&Q);
+Qbar=((~J)&(Qbar))|K&(~Qbar);
+end
+endmodule
+
+```
+### RTL LOGIC FOR FLIPFLOPS 
+![Screenshot 2023-05-25 113050](https://github.com/JEGADEESH07/Experiment--05-Implementation-of-flipflops-using-verilog/assets/113497131/175a838e-2071-40e5-ae46-4d9db418b6ff)
+
+### TIMING DIGRAMS FOR FLIP FLOPS 
+![Screenshot 2023-05-25 113014](https://github.com/JEGADEESH07/Experiment--05-Implementation-of-flipflops-using-verilog/assets/113497131/fc725285-01e0-46cc-9967-25756ab7334b)
+
+
+
 
 ### RESULTS 
-All the flipflops are implementde using verilog and their functionality has been validated using their functional tables.
+Thus implementation of SR,JK,D and T flipflops using nand gates are done sucessfully.
